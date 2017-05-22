@@ -1,0 +1,34 @@
+﻿@inject SignInManager<ApplicationUser> SignInManager
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" asp-href-include="lib/bootstrap/dist/css/*.min.css" />
+    <title>@ViewBag.Title</title>
+    <style>
+        .input-validation-error {
+            border-color: red;
+            background-color: #fee;
+        }
+    </style>
+</head>
+<body class="panel panel-default">
+    <nav class="navbar navbar-inverse">
+        <div class="container">
+            <div class="navbar-collapse collapse" style="margin-bottom : -2em">
+                <p class="navbar-left" style="color: white; font-size:large; text-align:left; font-weight:bold">@ViewBag.Title</p>
+                @await Html.PartialAsync("_LoginPartial")
+            </div>
+        </div>
+    </nav>
+    <div class="panel-body">
+        @if (TempData["message"] != null)
+        {
+            <div class="alert alert-success">@TempData["message"]</div>
+        }
+        @RenderBody()
+    </div>
+    @RenderSection("scripts", required: false)
+</body>
+</html>

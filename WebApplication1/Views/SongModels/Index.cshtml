@@ -1,0 +1,28 @@
+@model WebApplication1.Models.ViewModels.SongListViewModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+<form asp-action="Index" method="get">
+    <div class="form-actions no-color">
+        <p>
+            Find by name: <input type="text" name="searchText" value="@ViewData["searchText"]" />
+            <input type="submit" value="Search" class="btn btn-default" /> |
+            <a asp-action="Index">Back to List</a>
+        </p>
+    </div>
+</form>
+@*<p>
+    <a asp-action="Create">Create New</a>
+</p>*@
+@foreach (var p in Model.Songs)
+{
+    @Html.Partial("ProductSummary", p)
+}
+<div page-model="@Model.PagingInfo" page-action="Index" page-classes-enabled="true"
+     page-class="btn" page-class-normal="btn-default"
+     page-class-selected="btn-primary" class="btn-group pull-right"
+     page-url-category="@Model.CurrentCategory">
+</div>

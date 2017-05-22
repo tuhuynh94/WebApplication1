@@ -1,0 +1,26 @@
+﻿@model SongModel
+
+<div class="well" style="padding-bottom:3em">
+    <h3>
+        <strong>@Model.Name</strong>
+        <span class="pull-right label label-primary">
+            @Model.Price.ToString("c")
+        </span>
+    </h3>
+
+    <form id="@Model.id" asp-action="AddToCart"
+          asp-controller="Cart" method="post">
+        <input type="hidden" asp-for="id" />
+        <input type="hidden" name="returnUrl"
+               value="@ViewContext.HttpContext.Request.PathAndQuery()" />
+        <span class="lead">
+            @Model.Artist
+            <button type="submit" class="btn btn-success btn-sm pull-right">
+                Add To Cart
+            </button>
+        </span>
+    </form>
+    <audio src="~/music/abc.mp3" preload="none" controls loop>
+        <p>Trình duyệt của bạn không hỗ trợ HTML5 Audio</p>
+    </audio>
+</div>

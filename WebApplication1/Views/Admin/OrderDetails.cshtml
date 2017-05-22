@@ -1,0 +1,34 @@
+﻿@model IEnumerable<Order>
+@{
+    ViewBag.Title = "All Orders";
+    Layout = "_AdminLayout";
+}
+<table class="table table-striped table-bordered table-condensed">
+    <tr>
+        <th class="text-center">ID</th>
+        <th class="text-center">Name</th>
+        <th class="text-center">Shipped</th>
+        @*<th class="text-center">Actions</th>*@
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td class="text-center">@item.OrderID</td>
+            <td>@item.Name</td>
+            <td class="text-center">@item.Shipped</td>
+            @*<td class="text-center">
+
+
+                <a asp-action="Edit" class="btn btn-sm btn-warning"
+                   asp-route-productId="@item.OrderID">
+                    Edit
+                </a>
+
+                <a asp-action="Delete" class="btn btn-danger btn-sm" asp-route-productId="@item.OrderID">
+                    Delete
+                </a>
+
+            </td>*@
+        </tr>
+    }
+</table>
